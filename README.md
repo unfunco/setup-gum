@@ -6,6 +6,13 @@
 
 ### Usage instructions
 
+```yaml
+- name: Set up Gum
+  uses: unfunco/setup-gum@v1
+- name: Display the Gum version
+  run: gum --version
+```
+
 ### Development and testing
 
 #### Requirements
