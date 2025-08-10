@@ -75,8 +75,11 @@ async function installGumVersion(
 
 async function getLatestVersion(): Promise<string> {
   const headers: Record<string, string> = {
-    Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
     'User-Agent': 'unfunco/setup-gum',
+  }
+
+  if (process.env.GITHUB_TOKEN) {
+    headers['Authorization'] = `Bearer ${process.env.GITHUB_TOKEN}`
   }
 
   const response = await fetch(

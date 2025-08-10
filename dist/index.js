@@ -29862,9 +29862,11 @@ async function installGumVersion(version, osType, osArch) {
 }
 async function getLatestVersion() {
     const headers = {
-        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
         'User-Agent': 'unfunco/setup-gum',
     };
+    if (process.env.GITHUB_TOKEN) {
+        headers['Authorization'] = `Bearer ${process.env.GITHUB_TOKEN}`;
+    }
     const response = await fetch('https://api.github.com/repos/charmbracelet/gum/releases/latest', { headers });
     if (!response.ok) {
         throw new Error(`Failed to fetch latest version: ${response.statusText}`);
