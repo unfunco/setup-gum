@@ -1,0 +1,43 @@
+{
+  "description": "GitHub Action to assist with installing Gum from Charm.",
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "5.2.2",
+    "@types/jest": "30.0.0",
+    "@types/node": "20.14.8",
+    "@actions/core": "1.11.1",
+    "@actions/tool-cache": "2.0.2",
+    "@github/local-action": "5.1.0",
+    "@rollup/plugin-commonjs": "28.0.6",
+    "@rollup/plugin-node-resolve": "16.0.1",
+    "@rollup/plugin-typescript": "12.1.4",
+    "cross-env": "10.0.0",
+    "husky": "9.1.7",
+    "jest": "30.0.5",
+    "prettier": "3.6.2",
+    "rollup": "4.46.2",
+    "ts-jest": "29.4.1",
+    "ts-jest-resolver": "2.0.1",
+    "ts-node": "10.9.2",
+    "tslib": "2.8.1",
+    "typescript": "5.9.2"
+  },
+  "engines": {
+    "node": "20.x",
+    "npm": ">= 10"
+  },
+  "license": "MIT",
+  "name": "@unfunco/setup-gum",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unfunco/setup-gum.git"
+  },
+  "scripts": {
+    "build": "npx rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
+    "fmt:check": "npx prettier --check .",
+    "fmt:fix": "npx prettier --write .",
+    "locally": "npx @github/local-action . src/main.ts .env",
+    "test": "npx jest --passWithNoTests"
+  },
+  "version": "0.0.0"
+}

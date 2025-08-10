@@ -1,0 +1,87 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+    - main
+    paths-ignore:
+    - .editorconfig
+    - .env.example
+    - .gitattributes
+    - .gitignore
+    - CHANGELOG.md
+    - README.md
+  push:
+    branches:
+    - main
+    paths-ignore:
+    - .editorconfig
+    - .env.example
+    - .gitattributes
+    - .gitignore
+    - CHANGELOG.md
+    - README.md
+
+jobs:
+  verify:
+    name: Verify
+    runs-on: ubuntu-24.04
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        cache: npm
+        node-version-file: .node-version
+    - name: Install dependencies
+      run: npm ci
+    - name: Check formatting
+      run: npm run fmt:check
+    - name: Run tests
+      run: npm run test
+
+  build:
+    name: Build
+    needs: [ verify ]
+    runs-on: ubuntu-24.04
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        cache: npm
+        node-version-file: .node-version
+    - name: Install dependencies
+      run: npm ci
+    - name: Build project
+      run: npm run build
+    - name: Ensure build artifacts are updated
+      run: |
+        if [[ -n "$(git status --porcelain dist/)" ]]; then
+          >&2 echo "Error: Built files don't match committed files in dist directory."
+          >&2 echo "Build the project locally and commit the updated dist files."
+          git status --porcelain dist/
+          exit 1
+        fi
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: dist
+        path: dist/
+
+  run:
+    name: Run
+    needs: [ build ]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Set up Gum
+      uses: ./
+    - name: Ensure Gum works
+      run: gum --version
+    strategy:
+      matrix:
+        os: [ macos-latest, ubuntu-latest ]

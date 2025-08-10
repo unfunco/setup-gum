@@ -1,0 +1,17 @@
+description: Installs Gum in GitHub Actions.
+name: Setup Gum
+
+branding:
+  author: Daniel Morris
+  color: black
+  icon: box
+
+inputs:
+  version:
+    default: "latest"
+    description: The version of Gum to install.
+    required: false
+
+runs:
+  main: dist/index.js
+  using: node20
