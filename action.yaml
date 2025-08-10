@@ -3,8 +3,8 @@ name: Setup Gum
 
 branding:
   author: Daniel Morris
-  color: black
-  icon: box
+  color: red
+  icon: star
 
 inputs:
   version:
