@@ -29861,12 +29861,11 @@ async function installGumVersion(version, osType, osArch) {
     return cachedPath;
 }
 async function getLatestVersion() {
-    const token = process.env.GITHUB_TOKEN;
     const headers = {
-        'User-Agent': 'setup-gum-action',
+        'User-Agent': 'unfunco/setup-gum',
     };
-    if (token) {
-        headers['Authorization'] = `token ${token}`;
+    if (process.env.GITHUB_TOKEN) {
+        headers['Authorization'] = `Bearer ${process.env.GITHUB_TOKEN}`;
     }
     const response = await fetch('https://api.github.com/repos/charmbracelet/gum/releases/latest', { headers });
     if (!response.ok) {
