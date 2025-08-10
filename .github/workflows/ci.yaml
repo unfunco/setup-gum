@@ -85,7 +85,17 @@ jobs:
     - name: Set up Gum
       uses: ./
     - name: Ensure Gum works
-      run: gum --version
+      run: |
+        gum style \
+          --align center \
+          --bold \
+          --border-foreground 212 \
+          --border double \
+          --foreground 212 \
+          --margin "1 2" \
+          --padding "2 4" \
+          --width 50 \
+          "$(gum --version) installed."
     strategy:
       matrix:
         os: [ macos-latest, ubuntu-latest ]

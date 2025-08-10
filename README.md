@@ -1,6 +1,8 @@
-# Gum in GitHub Actions
+# Gum for GitHub Actions
 
-[Gum] is a tool for glamorous shell scripts.
+[Gum] is a tool for glamorous shell scripts, made by [Charm]. This GitHub Action
+installs Gum on your GitHub Actions runner, allowing you to use it in your
+workflows. It supports Ubuntu and macOS runners.
 
 ## Getting started
 
@@ -9,8 +11,18 @@
 ```yaml
 - name: Set up Gum
   uses: unfunco/setup-gum@v1
-- name: Display the Gum version
-  run: gum --version
+- name: Verify installation
+  run: |
+    gum style \
+      --align center \
+      --bold \
+      --border-foreground 212 \
+      --border double \
+      --foreground 212 \
+      --margin "1 2" \
+      --padding "2 4" \
+      --width 50 \
+      "$(gum --version) installed."
 ```
 
 ### Development and testing
