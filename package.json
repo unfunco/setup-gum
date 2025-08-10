@@ -39,5 +39,5 @@
     "locally": "npx @github/local-action . src/main.ts .env",
     "test": "npx jest --passWithNoTests"
   },
-  "version": "0.0.0"
+  "version": "0.1.0"
 }
