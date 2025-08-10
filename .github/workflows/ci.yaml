@@ -5,21 +5,25 @@ on:
     branches:
     - main
     paths-ignore:
+    - .claude/
     - .editorconfig
     - .env.example
     - .gitattributes
     - .gitignore
     - CHANGELOG.md
+    - CLAUDE.md
     - README.md
   push:
     branches:
     - main
     paths-ignore:
+    - .claude/
     - .editorconfig
     - .env.example
     - .gitattributes
     - .gitignore
     - CHANGELOG.md
+    - CLAUDE.md
     - README.md
 
 jobs:
