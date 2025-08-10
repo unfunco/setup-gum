@@ -1,3 +1,6 @@
+# Claude.
+.claude/settings.local.json
+
 # General.
 *.tgz
 .DS_Store

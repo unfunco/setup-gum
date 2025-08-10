@@ -1,0 +1,34 @@
+{
+  "cleanupPeriodDays": 7,
+  "enableAllProjectMcpServers": true,
+  "hooks": {
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "jq -r '.tool_input.file_path | select(endswith(\".json\") or endswith(\".ts\"))' | xargs -r npx prettier --write",
+            "type": "command"
+          }
+        ],
+        "matcher": "Write|Edit|MultiEdit"
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(curl:*)",
+      "Bash(find:*)",
+      "Bash(gh:*)",
+      "Bash(git:*)",
+      "Bash(grep:*)",
+      "Bash(ls:*)",
+      "Bash(npm install)",
+      "Bash(npm run:*)",
+      "Bash(npm test)",
+      "WebFetch(domain:api.github.com)",
+      "WebFetch(domain:github.com)"
+    ],
+    "deny": []
+  }
+}
