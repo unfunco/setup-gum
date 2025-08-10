@@ -1,16 +1,30 @@
 # Gum for GitHub Actions
 
+![CI](https://github.com/unfunco/setup-gum/actions/workflows/ci.yaml/badge.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](https://opensource.org/licenses/MIT)
+
+<img src="assets/images/octocat.jpg" alt="Octocat blowing a bubblegum bubble" width="300" align="right" style="padding: 0 0 0 10px">
+
 [Gum] is a tool for glamorous shell scripts, made by [Charm]. This GitHub Action
 installs Gum on your GitHub Actions runner, allowing you to use it in your
 workflows. It supports Ubuntu and macOS runners.
 
-## Getting started
+> [!NOTE]
+> I am not affiliated with [Charm] or the [Gum] project.
+
+## 🔧 Getting started
 
 ### Usage instructions
 
+The following example demonstrates how to use the action in a GitHub Actions job
+to install a specific version of Gum and verify the installation by displaying
+the version number.
+
 ```yaml
 - name: Set up Gum
-  uses: unfunco/setup-gum@v1
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  uses: unfunco/setup-gum@main
 - name: Verify installation
   run: |
     gum style \
