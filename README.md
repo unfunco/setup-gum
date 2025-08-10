@@ -3,14 +3,14 @@
 ![CI](https://github.com/unfunco/setup-gum/actions/workflows/ci.yaml/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](https://opensource.org/licenses/MIT)
 
-<img src="assets/images/octocat.jpg" alt="Octocat blowing a bubblegum bubble" width="300" align="right" style="padding: 0 0 0 10px">
+<img src="assets/images/octocat.jpg" alt="Octocat blowing a bubblegum bubble" width="200" align="right" style="padding: 0 0 0 10px">
 
 [Gum] is a tool for glamorous shell scripts, made by [Charm]. This GitHub Action
 installs Gum on your GitHub Actions runner, allowing you to use it in your
 workflows. It supports Ubuntu and macOS runners.
 
 > [!NOTE]
-> I am not affiliated with [Charm] or the [Gum] project.
+> I am not affiliated with Charm or the Gum project.
 
 ## 🔧 Getting started
 
@@ -22,21 +22,19 @@ the version number.
 
 ```yaml
 - name: Set up Gum
+  uses: unfunco/setup-gum@main
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  uses: unfunco/setup-gum@main
 - name: Verify installation
   run: |
     gum style \
       --align center \
       --bold \
-      --border-foreground 212 \
       --border double \
-      --foreground 212 \
       --margin "1 2" \
       --padding "2 4" \
       --width 50 \
-      "$(gum --version) installed."
+      "$(gum --version) installed successfully!"
 ```
 
 ### Development and testing
