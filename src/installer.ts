@@ -74,8 +74,18 @@ async function installGumVersion(
 }
 
 async function getLatestVersion(): Promise<string> {
+  const token = process.env.GITHUB_TOKEN
+  const headers: Record<string, string> = {
+    'User-Agent': 'setup-gum-action',
+  }
+
+  if (token) {
+    headers['Authorization'] = `token ${token}`
+  }
+
   const response = await fetch(
     'https://api.github.com/repos/charmbracelet/gum/releases/latest',
+    { headers },
   )
 
   if (!response.ok) {
