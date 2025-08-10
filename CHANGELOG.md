@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/unfunco/setup-gum/compare/v0.1.0...v0.1.1) (2025-08-10)
+
+
+### 🧹 Miscellaneous
+
+* Improve the README documentation ([#7](https://github.com/unfunco/setup-gum/issues/7)) ([0bcd769](https://github.com/unfunco/setup-gum/commit/0bcd76909bb1aed8a7b8be4649dad2d768c29649))
+
 ## 0.1.0 (2025-08-10)
 
 
