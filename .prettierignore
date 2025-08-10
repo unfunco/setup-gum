@@ -1,0 +1,6 @@
+*.yaml
+.github/release-please-manifest.json
+CHANGELOG.md
+coverage/
+dist/
+node_modules/
