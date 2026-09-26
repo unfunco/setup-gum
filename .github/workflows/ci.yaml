@@ -102,7 +102,7 @@ jobs:
           "$(gum --version) installed."
     strategy:
       matrix:
-        os: [ macos-latest, ubuntu-latest ]
+        os: [ macos-latest, ubuntu-26.04 ]
 
   release:
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/main')
