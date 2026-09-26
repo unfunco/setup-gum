@@ -110,12 +110,5 @@ jobs:
     needs: [ run ]
     permissions:
       contents: write
-      issues: write
       pull-requests: write
-    runs-on: ubuntu-24.04
-    steps:
-    - name: Release?
-      uses: googleapis/release-please-action@v4
-      with:
-        config-file: .github/release-please-config.json
-        manifest-file: .github/release-please-manifest.json
+    uses: unfunco/meta/.github/workflows/release-please.yaml@2cf07936a31dca1b82fe1e447f48e1580c10880e # v0.2.0
