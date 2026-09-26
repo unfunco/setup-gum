@@ -10,7 +10,7 @@ jobs:
       contents: read
       issues: write
       pull-requests: write
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
     - name: Apply labels based on the PR title
       uses: actions/github-script@v7
