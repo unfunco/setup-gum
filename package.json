@@ -3,7 +3,7 @@
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "5.2.2",
     "@types/jest": "30.0.0",
-    "@types/node": "20.14.8",
+    "@types/node": "26.6.6",
     "@actions/core": "1.11.1",
     "@actions/tool-cache": "2.0.2",
     "@github/local-action": "5.1.0",
