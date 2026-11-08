@@ -3,6 +3,9 @@ name: PR / Label
 on:
   pull_request_target: { }
 
+permissions:
+  contents: read
+
 jobs:
   triage:
     name: Triage
@@ -10,30 +13,4 @@ jobs:
       contents: read
       issues: write
       pull-requests: write
-    runs-on: ubuntu-26.04
-    steps:
-    - name: Apply labels based on the PR title
-      uses: actions/github-script@v7.1.0
-      with:
-        script: |
-          const prefixToLabelMap = {
-            'bug / fix 🐛': 'fix:',
-            'chore 🧹': 'chore:',
-            'feature 🥕': 'feat:',
-          }
-
-          const labels = []
-          for (const [label, prefix] of Object.entries(prefixToLabelMap)) {
-            if (context.payload.pull_request.title.startsWith(prefix)) {
-              labels.push(label)
-            }
-          }
-
-          if (labels.length > 0) {
-            github.rest.issues.addLabels({
-              issue_number: context.issue.number,
-              labels,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-            })
-          }
+    uses: unfunco/meta/.github/workflows/label-pr.yaml@ed74a86a4f828ad47a4c65139c4be4101b23a294 # v0.4.0
