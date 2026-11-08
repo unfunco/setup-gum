@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-26.04
     steps:
     - name: Apply labels based on the PR title
-      uses: actions/github-script@v7
+      uses: actions/github-script@v7.1.0
       with:
         script: |
           const prefixToLabelMap = {
